@@ -3,8 +3,8 @@ from flask import Flask
 app = Flask(_name_)
 
 @app.rout("/")
-def main():
-    return "Welcome!"
+  def hello():
+    return "Hello World!"
 
 @app.route('/how are you')
 def hello():
