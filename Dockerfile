@@ -1,10 +1,11 @@
-# Dockerfile
-FROM ubuntu:16.04
+FROM python:3.10.2
 
-RUN apt-get update && apt-get install -y python python-pip flask
+WORKDIR /usr/src/app
 
-RUN pip install --upgrade pip
+COPY requirements.txt ./
 
-COPY app.py /opt/
+RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0
+COPY . .
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
