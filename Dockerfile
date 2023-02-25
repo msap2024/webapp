@@ -1,11 +1,9 @@
 # Dockerfile
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y python python-pip
+RUN apt-get update && apt-get install -y python python-pip flask
 
 RUN pip install --upgrade pip
-
-RUN pip install flask
 
 COPY app.py /opt/
 
